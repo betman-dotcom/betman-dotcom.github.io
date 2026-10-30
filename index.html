@@ -54,7 +54,7 @@ function render(){
  const parts=[m.home_team||'EV SAHİBİ',m.away_team||'DEPLASMAN'];
  const card=document.createElement('article');card.className='match-card'+(i===active?' active':'');card.dataset.index=i;
  if(m.cover_url)card.style.setProperty('--cover',`url("${m.cover_url.replace(/"/g,'%22')}")`);
- card.innerHTML=`<span class="league">${esc((m.match_time||'MAÇ').split(' · ').slice(-1)[0])}</span><span class="number">MAÇ ${String(i+1).padStart(2,'0')}</span><div class="teams"><div class="team">${esc(parts[0])}</div><div class="vs">VS</div><div class="team">${esc(parts[1])}</div></div><div class="card-bottom"><span>${esc(m.match_time||'')}</span><span class="status ${statusClass(m.status)}">${esc(resultText(m))}</span></div>`;
+ card.innerHTML=`<span class="league">TAHMİN</span><span class="number">MAÇ ${String(i+1).padStart(2,'0')}</span><div class="teams"><div class="team">${esc(parts[0])}</div><div class="vs">VS</div><div class="team">${esc(parts[1])}</div></div><div class="card-bottom"><span>${esc(m.match_time||'')}</span><span class="status ${statusClass(m.status)}">${esc(resultText(m))}</span></div>`;
  card.addEventListener('click',()=>setActive(i));gallery.appendChild(card);
  });
  if(matches.length){active=Math.min(active,matches.length-1);updateDetails();}else{$('matchTitle').textContent='Henüz yayımlanmış maç yok';$('matchMeta').textContent='';$('matchComment').textContent='Yeni maçlar yakında burada.';$('matchPrediction').textContent='—';$('matchResult').textContent='';}
